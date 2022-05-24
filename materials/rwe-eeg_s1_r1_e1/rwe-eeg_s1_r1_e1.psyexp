@@ -39,7 +39,7 @@
     <Param name="elSimMode" updates="None" val="False" valType="bool"/>
     <Param name="elTrackEyes" updates="None" val="RIGHT_EYE" valType="str"/>
     <Param name="elTrackingMode" updates="None" val="PUPIL_CR_TRACKING" valType="str"/>
-    <Param name="expName" updates="None" val="rwe-eeg_s1_r1_e1" valType="str"/>
+    <Param name="expName" updates="None" val="rwe-eeg_s1_r1_e1trmp" valType="str"/>
     <Param name="exportHTML" updates="None" val="manually" valType="str"/>
     <Param name="eyetracker" updates="None" val="None" valType="str"/>
     <Param name="gpAddress" updates="None" val="127.0.0.1" valType="str"/>
@@ -126,6 +126,21 @@
       </CodeComponent>
     </Routine>
     <Routine name="instructCalibration">
+      <SoundComponent name="sound_5">
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="hamming" updates="constant" val="False" valType="bool"/>
+        <Param name="name" updates="None" val="sound_5" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="sound" updates="constant" val="resources\sine-200z-1s_100ms-fade.wav" valType="str"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="1.0" valType="code"/>
+        <Param name="syncScreenRefresh" updates="constant" val="False" valType="bool"/>
+        <Param name="volume" updates="constant" val="75" valType="num"/>
+      </SoundComponent>
       <TextComponent name="explainCalib">
         <Param name="color" updates="constant" val="black" valType="color"/>
         <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
@@ -393,7 +408,7 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="num"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="In this task, you will be presented with a series of text passages that you will read aloud.&amp;#10;&amp;#10;Please read clearly, at your normal volume and reading speed, as if you were reading a story to another person.&amp;#10;&amp;#10;There are a total of 8 passages. Each passage should take about 2 minutes to read. After each passage, you will be asked a question based on the text.&amp;#10;&amp;#10;You may take a short break (less than a minute) between each passage if you like, or you can continue to the next passage right away." valType="str"/>
+        <Param name="text" updates="constant" val="In this task, you will be presented with a series of text passages that you will read aloud.&amp;#10;&amp;#10;Please read clearly, at your normal volume and reading speed, as if you were reading a story to another person.&amp;#10;&amp;#10;There are a total of 8 passages. Each passage should take about 2 minutes to read. After each passage, you will be asked a question based on the text.&amp;#10;&amp;#10;You may take a short break (30 seconds) between each passage if you like, or you can continue to the next passage right away." valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="0.9" valType="num"/>
       </TextComponent>
@@ -484,6 +499,21 @@
       </CodeComponent>
     </Routine>
     <Routine name="passage1">
+      <SoundComponent name="sound_1">
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="hamming" updates="constant" val="False" valType="bool"/>
+        <Param name="name" updates="None" val="sound_1" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="sound" updates="constant" val="C:\Users\NDClab\Desktop\Experiments\RWE\jess_darwin\rwe-eeg_s1_r1_e1\resources\sine-200z-1s_100ms-fade.wav" valType="str"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.2" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="1.0" valType="code"/>
+        <Param name="syncScreenRefresh" updates="constant" val="False" valType="bool"/>
+        <Param name="volume" updates="constant" val="75" valType="num"/>
+      </SoundComponent>
       <TextComponent name="passageText1">
         <Param name="color" updates="constant" val="black" valType="color"/>
         <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
@@ -605,6 +635,21 @@
       </CodeComponent>
     </Routine>
     <Routine name="challenge1">
+      <SoundComponent name="sound_3">
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="hamming" updates="constant" val="False" valType="bool"/>
+        <Param name="name" updates="None" val="sound_3" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="sound" updates="constant" val="C:\Users\NDClab\Desktop\Experiments\RWE\jess_darwin\rwe-eeg_s1_r1_e1\resources\sine-200z-1s_100ms-fade.wav" valType="str"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="1.0" valType="code"/>
+        <Param name="syncScreenRefresh" updates="constant" val="False" valType="bool"/>
+        <Param name="volume" updates="constant" val="75" valType="num"/>
+      </SoundComponent>
       <TextComponent name="challengeText1">
         <Param name="color" updates="constant" val="black" valType="color"/>
         <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
@@ -759,6 +804,21 @@
       </CodeComponent>
     </Routine>
     <Routine name="readyScreen1">
+      <SoundComponent name="sound_4">
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="hamming" updates="constant" val="False" valType="bool"/>
+        <Param name="name" updates="None" val="sound_4" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="sound" updates="constant" val="resources\sine-200z-1s_100ms-fade.wav" valType="str"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="1.0" valType="code"/>
+        <Param name="syncScreenRefresh" updates="constant" val="False" valType="bool"/>
+        <Param name="volume" updates="constant" val="75" valType="num"/>
+      </SoundComponent>
       <TextComponent name="readingBreak1">
         <Param name="color" updates="constant" val="black" valType="color"/>
         <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
@@ -778,9 +838,9 @@
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="num"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
-        <Param name="stopVal" updates="constant" val="60.0" valType="num"/>
+        <Param name="stopVal" updates="constant" val="30.0" valType="num"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="If you need a break, please take a short break now (less than a minute).&amp;#10;&amp;#10;You can skip this break and proceed to the next passage&amp;#10;by pressing the space key." valType="str"/>
+        <Param name="text" updates="constant" val="If you need a break, please take a short break now (30 seconds).&amp;#10;&amp;#10;You can skip this break and proceed to the next passage&amp;#10;by pressing the space key." valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="1.1" valType="num"/>
       </TextComponent>
@@ -797,7 +857,7 @@
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="num"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
-        <Param name="stopVal" updates="constant" val="60.0" valType="num"/>
+        <Param name="stopVal" updates="constant" val="30.0" valType="num"/>
         <Param name="store" updates="constant" val="last key" valType="str"/>
         <Param name="storeCorrect" updates="constant" val="False" valType="bool"/>
         <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
@@ -821,9 +881,9 @@
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="num"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
-        <Param name="stopVal" updates="constant" val="60.0" valType="num"/>
+        <Param name="stopVal" updates="constant" val="30.0" valType="num"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="set every frame" val="$round(60 - t)" valType="str"/>
+        <Param name="text" updates="set every frame" val="$round(30 - t)" valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="1.1" valType="num"/>
       </TextComponent>
@@ -865,10 +925,10 @@
         <Param name="name" updates="None" val="readAloudCode" valType="code"/>
       </CodeComponent>
       <CodeComponent name="eegTriggerCode">
-        <Param name="Before Experiment" updates="constant" val="import serial #used for sending eeg triggers&amp;#10;import time #indirectly used for sending eeg triggers (how long to wait before clearing port)&amp;#10;&amp;#10;&amp;#10;# Setup the Window&amp;#10;win = visual.Window(&amp;#10;    size=[1536, 960], fullscr=True, screen=0, &amp;#10;    winType='pyglet', allowGUI=False, allowStencil=False,&amp;#10;    monitor='testMonitor', color=[0.6549,0.6549,0.6549], colorSpace='rgb',&amp;#10;    blendMode='avg', useFBO=True, &amp;#10;    units='height')&amp;#10;&amp;#10;win.mouseVisible = False #hide mouse cursor&amp;#10;port = serial.Serial('COM3') #open specified port (COM3) for sending eeg triggers to           &amp;#10;PulseWidth = 0.002 #how long to wait before clearing port after sending trigger (2 ms is sufficient at 1000 hz sampling rate)&amp;#10;&amp;#10;port.write([0x00]) #clear serial port&amp;#10;time.sleep(PulseWidth) #wait PulseWidth amount of time before doing anything else" valType="extendedCode"/>
-        <Param name="Before JS Experiment" updates="constant" val="import * as serial from 'serial';&amp;#10;import * as time from 'time';&amp;#10;var PulseWidth, port, win;&amp;#10;win = new visual.Window({&quot;size&quot;: [1536, 960], &quot;fullscr&quot;: true, &quot;screen&quot;: 0, &quot;winType&quot;: &quot;pyglet&quot;, &quot;allowGUI&quot;: false, &quot;allowStencil&quot;: false, &quot;monitor&quot;: &quot;testMonitor&quot;, &quot;color&quot;: [0.6549, 0.6549, 0.6549], &quot;colorSpace&quot;: &quot;rgb&quot;, &quot;blendMode&quot;: &quot;avg&quot;, &quot;useFBO&quot;: true, &quot;units&quot;: &quot;height&quot;});&amp;#10;psychoJS.window.mouseVisible = false;&amp;#10;port = new serial.Serial(&quot;COM3&quot;);&amp;#10;PulseWidth = 0.002;&amp;#10;port.write([0]);&amp;#10;time.sleep(PulseWidth);&amp;#10;" valType="extendedCode"/>
-        <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Before Experiment" updates="constant" val="import serial #used for sending eeg triggers&amp;#10;import time #indirectly used for sending eeg triggers (how long to wait before clearing port)&amp;#10;&amp;#10;port = serial.Serial('COM3') #open specified port (COM3) for sending eeg triggers to           &amp;#10;PulseWidth = 0.002 #how long to wait before clearing port after sending trigger (2 ms is sufficient at 1000 hz sampling rate)&amp;#10;&amp;#10;port.write([0x00]) #clear serial port&amp;#10;time.sleep(PulseWidth) #wait PulseWidth amount of time before doing anything else" valType="extendedCode"/>
+        <Param name="Before JS Experiment" updates="constant" val="import * as serial from 'serial';&amp;#10;import * as time from 'time';&amp;#10;var PulseWidth, port;&amp;#10;port = new serial.Serial(&quot;COM3&quot;);&amp;#10;PulseWidth = 0.002;&amp;#10;port.write([0]);&amp;#10;time.sleep(PulseWidth);&amp;#10;" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="win.mouseVisible = False #hide mouse cursor&amp;#10;" valType="extendedCode"/>
+        <Param name="Begin JS Experiment" updates="constant" val="psychoJS.window.mouseVisible = false;&amp;#10;" valType="extendedCode"/>
         <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="Auto-&gt;JS" valType="str"/>
@@ -883,6 +943,21 @@
       </CodeComponent>
     </Routine>
     <Routine name="instructChallenge">
+      <SoundComponent name="sound_2">
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="hamming" updates="constant" val="False" valType="bool"/>
+        <Param name="name" updates="None" val="sound_2" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="sound" updates="constant" val="C:\Users\NDClab\Desktop\Experiments\RWE\jess_darwin\rwe-eeg_s1_r1_e1\resources\sine-200z-1s_100ms-fade.wav" valType="str"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="1.0" valType="code"/>
+        <Param name="syncScreenRefresh" updates="constant" val="False" valType="bool"/>
+        <Param name="volume" updates="constant" val="75" valType="num"/>
+      </SoundComponent>
       <TextComponent name="instructChallengeText">
         <Param name="color" updates="constant" val="black" valType="color"/>
         <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
