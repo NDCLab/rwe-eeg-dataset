@@ -1,0 +1,8 @@
+STIMULUS TRIGGERS
+passage text appears on-screen: 11
+passage text disappears (participant proceeded to the next screen): 10
+challenge text appears on-screen: 21
+
+RESPONSE TRIGGERS
+error response to challenge question: 30
+correct response to challenge question: 31
