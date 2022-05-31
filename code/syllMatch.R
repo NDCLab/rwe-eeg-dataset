@@ -1,6 +1,6 @@
 # readAloud-valence-dataset Syllable Matching
 # Authors: Jessica M. Alexander, George. A. Buzzell
-# Last Updated: 2022-05-24
+# Last Updated: 2022-05-31
 
 ### SECTION 1: SETTING UP
 library(readxl)
@@ -11,10 +11,10 @@ today <- format(today, "%Y%m%d")
 
 #set up directories for input/output data
 #local
-blank_scaffolds <- '/Users/jalexand/Downloads/rwe-eeg-pilot/scaffolds.xlsx'
-lexical_data <- '/Users/jalexand/Downloads/rwe-eeg-pilot/lexical-characteristics.xlsx'
-input_path <- '/Users/jalexand/Downloads/rwe-eeg-pilot/error-coding/'
-out_path <- '/Users/jalexand/Downloads/rwe-eeg-pilot/'
+blank_scaffolds <- '/Users/jalexand/github/rwe-eeg-dataset/code/scaffolds.xlsx'
+lexical_data <- '/Users/jalexand/github/rwe-eeg-dataset/code/lexical-characteristics.xlsx'
+input_path <- '/Users/jalexand/github/rwe-eeg-dataset/derivatives/preprocessed/error-coding/'
+out_path <- '/Users/jalexand/github/rwe-eeg-dataset/derivatives/preprocessed/'
 
 #identify participant folders within input dir
 sub_folders <- list.files(input_path, pattern = "sub")
@@ -51,14 +51,14 @@ for(i in 1:length(sub_folders)){
     scaffold <- read_xlsx(blank_scaffolds, sheet=passage)
     lexDat <- read_xlsx(lexical_data, sheet=passage, skip=1)
     
-    errorData <- read_xlsx(errorCoded_file, sheet=NULL, range=anchored("B2", dim=c(10, dim(scaffold)[1]), col_names=FALSE))
+    errorData <- read_xlsx(errorCoded_file, sheet=NULL, range=anchored("B2", dim=c(9, dim(scaffold)[1]), col_names=FALSE))
     errorDataT <- t(errorData) #transpose matrix to align with scaffold
-    colnames(errorDataT) <- c("mispron", "wordstress", "duplicate", "falsestart", "insertion", "hesitation", "elongation", "omission","flipped")
+    colnames(errorDataT) <- c("mispron", "wordstress", "duplicate", "insertion", "hesitation", "elongation", "omission","flipped")
     
     passageErrors <- cbind(scaffold, errorDataT)
     
     #add column to indicate all disfluent syllables
-    passageErrors$disfluent <- rowSums(passageErrors[,6:14])>0
+    passageErrors$disfluent <- rowSums(passageErrors[,6:13])>0
     
     
     ### SECTION 4: START MISPRONUNCIATION LOOP
