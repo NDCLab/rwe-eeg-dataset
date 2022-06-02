@@ -6,4 +6,4 @@ For future data collection, the following changes are planned:
 * add a practice screen (pilot participants used the first instruction screen for practice)
 * shift from keyboard to button box for challenge question responses
 
-Note also that "The day rose" passage was rendered strangely in the PsychoPy output files during pilot data collection, simply shifting all outputs by several columns.  The passageList.xlsx file was updated (contents extracted to a text file and re-inserted to the proper cell) as a possible fix, but this should be tested prior to any further data collection.
+Note also that "The day rose" passage was rendered strangely in the PsychoPy output files during pilot data collection, simply shifting all outputs by several columns.  It seems likely that this is related to the quotation marks within the passage, although other passages with internal quotation marks were not similarly affected.
