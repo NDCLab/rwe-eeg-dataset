@@ -1,0 +1,21 @@
+﻿variable,description,detail,allowedSuffix,valueType,allowedValues,valueInfo,naValueType,activeStatus,replacement,provenance
+firstListA,valence readAloud task: first paragraph of passage from list1 (counterbalanced),passage content for identifying passage,s1_r1_e1,Char,see materials,NA,NA,1,NA,direct-psychopy
+firstListB,valence readAloud task: second paragraph of passage from list1 (counterbalanced),passage content for identifying passage,s1_r1_e1,Char,see materials,NA,NA,1,NA,direct-psychopy
+firstchallengeQuestion,valence readAloud task: challenge question from list1 (counterbalanced),challenge question,s1_r1_e1,Char,see materials,NA,NA,1,NA,direct-psychopy
+firstchoiceA,valence readAloud task: challenge question response option A from list1 (counterbalanced),challenge question possible response,s1_r1_e1,Char,see materials,NA,NA,1,NA,direct-psychopy
+firstchoiceB,valence readAloud task: challenge question response option B from list1 (counterbalanced),challenge question possible response,s1_r1_e1,Char,see materials,NA,NA,1,NA,direct-psychopy
+firstchoiceC,valence readAloud task: challenge question response option C from list1 (counterbalanced),challenge question possible response,s1_r1_e1,Char,see materials,NA,NA,1,NA,direct-psychopy
+firstchoiceD,valence readAloud task: challenge question response option D from list1 (counterbalanced),challenge question possible response,s1_r1_e1,Char,see materials,NA,NA,1,NA,direct-psychopy
+firstcorrectAnswer,valence readAloud task: correct response option for challenge question from list1 (counterbalanced),challenge question correct response option,s1_r1_e1,Categorical,A | B | C | D,NA,NA,1,NA,direct-psychopy
+secondListA,valence readAloud task: first paragraph of passage from list2 (counterbalanced),passage content for identifying passage,s1_r1_e1,Char,see materials,NA,NA,1,NA,direct-psychopy
+secondListB,valence readAloud task: second paragraph of passage from list2 (counterbalanced),passage content for identifying passage,s1_r1_e1,Char,see materials,NA,NA,1,NA,direct-psychopy
+secondchallengeQuestion,valence readAloud task: challenge question from list2 (counterbalanced),challenge question,s1_r1_e1,Char,see materials,NA,NA,1,NA,direct-psychopy
+secondchoiceA,valence readAloud task: challenge question response option A from list2 (counterbalanced),challenge question possible response,s1_r1_e1,Char,see materials,NA,NA,1,NA,direct-psychopy
+secondchoiceB,valence readAloud task: challenge question response option B from list2 (counterbalanced),challenge question possible response,s1_r1_e1,Char,see materials,NA,NA,1,NA,direct-psychopy
+secondchoiceC,valence readAloud task: challenge question response option C from list2 (counterbalanced),challenge question possible response,s1_r1_e1,Char,see materials,NA,NA,1,NA,direct-psychopy
+secondchoiceD,valence readAloud task: challenge question response option D from list2 (counterbalanced),challenge question possible response,s1_r1_e1,Char,see materials,NA,NA,1,NA,direct-psychopy
+secondcorrectAnswer,valence readAloud task: correct response option for challenge question from list2 (counterbalanced),challenge question correct response option,s1_r1_e1,Categorical,A | B | C | D,NA,NA,1,NA,direct-psychopy
+challengeResponse1.keys,valence readAloud task: participant response selected from list1,actual participant challenge question response selected,s1_r1_e1,Categorical,A | B | C | D,NA,NA,1,NA,direct-psychopy
+challengeResponse1.corr,valence readAloud task: challenge question accuracy,indication of whether participant correctly answered challenge question,s1_r1_e1,Logical,"0, 1","0, error | 1, correct response",NA,1,NA,direct-psychopy
+challengeResponse2.keys,valence readAloud task: participant response selected from list2,actual participant challenge question response selected,s1_r1_e1,Categorical,A | B | C | D,NA,NA,1,NA,direct-psychopy
+challengeResponse2.corr,readAloud task: challenge question accuracy,indication of whether participant correctly answered challenge question,s1_r1_e1,Logical,"0, 1","0, error | 1, correct response",NA,1,NA,direct-psychopy

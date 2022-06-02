@@ -1,0 +1,10 @@
+﻿variable,description,detail,allowedSuffix,valueType,allowedValues,valueInfo,naValueType,activeStatus,replacement,provenance
+passageText,darwin readAloud task: passage,passage content for identifying passage,s1_r1_e1,Char,see materials,NA,NA,1,NA,direct-psychopy
+firstchallengeQuestion,darwin readAloud task: challenge question,challenge question,s1_r1_e1,Char,see materials,NA,NA,1,NA,direct-psychopy
+firstchoiceA,darwin readAloud task: challenge question response option A,challenge question possible response,s1_r1_e1,Char,see materials,NA,NA,1,NA,direct-psychopy
+firstchoiceB,darwin readAloud task: challenge question response option B,challenge question possible response,s1_r1_e1,Char,see materials,NA,NA,1,NA,direct-psychopy
+firstchoiceC,darwin readAloud task: challenge question response option C,challenge question possible response,s1_r1_e1,Char,see materials,NA,NA,1,NA,direct-psychopy
+firstchoiceD,darwin readAloud task: challenge question response option D,challenge question possible response,s1_r1_e1,Char,see materials,NA,NA,1,NA,direct-psychopy
+firstcorrectAnswer,darwin readAloud task: correct response option for challenge question,challenge question correct response option,s1_r1_e1,Categorical,A | B | C | D,NA,NA,1,NA,direct-psychopy
+challengeResponse1.keys,darwin readAloud task: participant response selected,actual participant challenge question response selected,s1_r1_e1,Categorical,A | B | C | D,NA,NA,1,NA,direct-psychopy
+challengeResponse1.corr,darwin readAloud task: challenge question accuracy,indication of whether participant correctly answered challenge question,s1_r1_e1,Logical,"0, 1","0, error | 1, correct response",NA,1,NA,direct-psychopy
