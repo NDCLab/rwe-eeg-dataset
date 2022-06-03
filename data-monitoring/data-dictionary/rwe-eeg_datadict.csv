@@ -8,3 +8,5 @@ firstchoiceD,darwin readAloud task: challenge question response option D,challen
 firstcorrectAnswer,darwin readAloud task: correct response option for challenge question,challenge question correct response option,s1_r1_e1,Categorical,A | B | C | D,NA,NA,1,NA,direct-psychopy
 challengeResponse1.keys,darwin readAloud task: participant response selected,actual participant challenge question response selected,s1_r1_e1,Categorical,A | B | C | D,NA,NA,1,NA,direct-psychopy
 challengeResponse1.corr,darwin readAloud task: challenge question accuracy,indication of whether participant correctly answered challenge question,s1_r1_e1,Logical,"0, 1","0, error | 1, correct response",NA,1,NA,direct-psychopy
+challengeAccuracy,"darwin readAloud task, subject-level: average challenge question accuracy",average of participant's accuracy on challenge questions,s1_r1_e1,Real,"[0,1]",NA,NA,1,NA,code-preprocDarwin
+groupAvg,"darwin readAloud task, passage-level: cross-participant accuracy",overview of cross-participant accuracy for each reading passage,s1_r1_e1,Real,"[0,1]",NA,NA,1,NA,code-preprocDarwin
