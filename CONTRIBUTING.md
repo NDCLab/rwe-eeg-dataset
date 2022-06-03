@@ -1,4 +1,4 @@
-# Contributing to [project name]
+# Contributing to rwe-eeg-dataset
 
 ## Overview
 Please note our general guidelines for contributing to NDCLab projects [here](https://ndclab.github.io/wiki/docs/contributing.html).
@@ -13,8 +13,6 @@ Please note our general guidelines for contributing to NDCLab projects [here](ht
 ## Roadmap
 Please see the roadmap available on the [README.md](README.md) file of this repository.
 
-:point_right: Keep the "Roadmap" text above but update the link to the `readme` for your repo. And, of course, delete this note before publishing the contributing file.
-
 
 ## Directory Structure
 :point_right: Update this section as appropriate for your repo, then delete this note before publishing.
@@ -25,24 +23,17 @@ project-name
 ├── containers
 ├── CONTRIBUTING.md
 ├── data-monitoring
-    ├──data-monitoring-log.md
-    ├──data-monitoring-protocol.md
-    ├──postprocessing-check
-    ├──results-check
 ├── derivatives
     ├──preprocessed
 ├── literature
 ├── materials
     ├──questionnaires
-    ├──task1
-          ├──protocol.md
-          ├──scripts
-          ├──stimuli
+    ├──read-aloud-val-eeg_s1_r1_e1
+    ├──rwe-eeg_s1_r1_e1
+    ├──flanker_s1_r1_e1
 ├── notebook.md
 ├── README.md
 ├── sourcedata
-    ├──checked
-    ├──raw
 ```
 
 ### Container
