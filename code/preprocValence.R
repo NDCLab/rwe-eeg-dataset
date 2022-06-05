@@ -1,6 +1,6 @@
 # rwe-eeg-dataset PsychoPy Preprocessing for Valence Reading Task
 # Author: Jessica M. Alexander
-# Last Updated: 2022-06-03
+# Last Updated: 2022-06-05
 
 ### SECTION 1: SETTING UP
 #set up date for output file naming
@@ -21,7 +21,7 @@ sub_folders <- list.files(input_path, pattern = "sub")
 #create dataframes for storing output data and define output file names
 readAloudValenceSummaryDat <- data.frame(matrix(ncol=2, nrow=0))
 colnames(readAloudValenceSummaryDat) <- c("id", "challengeAccuracy")
-readAloudValence_out_subjectLevel <- paste("readAloud_Valence_subject-level_summary_", today, ".csv", sep="", collapse=NULL)
+readAloudValence_out_subjectLevel <- paste("readAloud_valence_subject-level_summary_", today, ".csv", sep="", collapse=NULL)
 
 readAloudValenceChallengeDat <- data.frame(matrix(ncol=1, nrow=20))
 colnames(readAloudValenceChallengeDat) <- c("passage")
