@@ -1,6 +1,6 @@
 # rwe-eeg-dataset PsychoPy Preprocessing for Valence Reading Task
 # Author: Jessica M. Alexander
-# Last Updated: 2022-06-05
+# Last Updated: 2022-06-08
 
 ### SECTION 1: SETTING UP
 #set up date for output file naming
@@ -20,7 +20,7 @@ sub_folders <- list.files(input_path, pattern = "sub")
 
 #create dataframes for storing output data and define output file names
 readAloudValenceSummaryDat <- data.frame(matrix(ncol=2, nrow=0))
-colnames(readAloudValenceSummaryDat) <- c("id", "challengeAccuracy")
+colnames(readAloudValenceSummaryDat) <- c("id", "challengeACC")
 readAloudValence_out_subjectLevel <- paste("readAloud_valence_subject-level_summary_", today, ".csv", sep="", collapse=NULL)
 
 readAloudValenceChallengeDat <- data.frame(matrix(ncol=1, nrow=20))
@@ -73,11 +73,11 @@ for(i in 1:length(sub_folders)){
     readAloudDatA <- psychopyDatTrim[!is.na(psychopyDatTrim$firstListA),]
     readAloudDatA$passageId <- substr(readAloudDatA$firstListA, 1, 11)
     readAloudDatA <- readAloudDatA[c("id", "passageId", "challengeResponse1.corr")]
-    colnames(readAloudDatA) <- c("id", "passage", "challengeAccuracy")
+    colnames(readAloudDatA) <- c("id", "passage", "challengeACC")
     readAloudDatB <- psychopyDatTrim[!is.na(psychopyDatTrim$secondListA),]
     readAloudDatB$passageId <- substr(readAloudDatB$secondListA, 1, 11)
     readAloudDatB <- readAloudDatB[c("id", "passageId", "challengeResponse2.corr")]
-    colnames(readAloudDatB) <- c("id", "passage", "challengeAccuracy")
+    colnames(readAloudDatB) <- c("id", "passage", "challengeACC")
     
     readAloudDat <- rbind(readAloudDatA, readAloudDatB)
     readAloudDat <- readAloudDat[order(readAloudDat$passage),]
@@ -86,13 +86,13 @@ for(i in 1:length(sub_folders)){
     readAloudDat <- readAloudDat[order(readAloudDat$passage),]
     
     #calculate accuracy for individual participant
-    challengeAccuracy <- mean(readAloudDat$challengeAccuracy)
+    challengeACC <- mean(readAloudDat$challengeACC)
     
     #store output data in summary matrices
-    readAloudValenceSummaryDat[nrow(readAloudValenceSummaryDat) + 1,] <-c(id,challengeAccuracy)
+    readAloudValenceSummaryDat[nrow(readAloudValenceSummaryDat) + 1,] <-c(id,challengeACC)
     
     newcol <- ncol(readAloudValenceChallengeDat) + 1
-    readAloudValenceChallengeDat[newcol] <- readAloudDat$challengeAccuracy
+    readAloudValenceChallengeDat[newcol] <- readAloudDat$challengeACC
     names(readAloudValenceChallengeDat)[newcol] <- id
   }    
     

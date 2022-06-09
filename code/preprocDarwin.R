@@ -1,6 +1,6 @@
 # rwe-eeg-dataset PsychoPy Preprocessing for Darwin Reading Task
 # Author: Jessica M. Alexander
-# Last Updated: 2022-06-03
+# Last Updated: 2022-06-08
 
 ### SECTION 1: SETTING UP
 #set up date for output file naming
@@ -20,7 +20,7 @@ sub_folders <- list.files(input_path, pattern = "sub")
 
 #create dataframes for storing output data and define output file names
 readAloudDarwinSummaryDat <- data.frame(matrix(ncol=2, nrow=0))
-colnames(readAloudDarwinSummaryDat) <- c("id", "challengeAccuracy")
+colnames(readAloudDarwinSummaryDat) <- c("id", "challengeACC")
 readAloudDarwin_out_subjectLevel <- paste("readAloud_darwin_subject-level_summary_", today, ".csv", sep="", collapse=NULL)
 
 readAloudDarwinChallengeDat <- data.frame(matrix(ncol=1, nrow=8))
@@ -60,10 +60,10 @@ for(i in 1:length(sub_folders)){
     psychopyDatTrim <- psychopyDatTrim[order(psychopyDatTrim$passageId),]
     
     #calculate accuracy for individual participant
-    challengeAccuracy <- mean(psychopyDatTrim$challengeResponse1.corr)
+    challengeACC <- mean(psychopyDatTrim$challengeResponse1.corr)
     
     #store output data in summary matrices
-    readAloudDarwinSummaryDat[nrow(readAloudDarwinSummaryDat) + 1,] <-c(id,challengeAccuracy)
+    readAloudDarwinSummaryDat[nrow(readAloudDarwinSummaryDat) + 1,] <-c(id,challengeACC)
     
     newcol <- ncol(readAloudDarwinChallengeDat) + 1
     readAloudDarwinChallengeDat[newcol] <- psychopyDatTrim$challengeResponse1.corr

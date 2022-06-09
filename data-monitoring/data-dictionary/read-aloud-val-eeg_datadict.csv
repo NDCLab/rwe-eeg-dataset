@@ -19,5 +19,5 @@ challengeResponse1.keys,valence readAloud task: participant response selected fr
 challengeResponse1.corr,valence readAloud task: challenge question accuracy,indication of whether participant correctly answered challenge question,s1_r1_e1,Logical,"0, 1","0, error | 1, correct response",NA,1,NA,direct-psychopy
 challengeResponse2.keys,valence readAloud task: participant response selected from list2,actual participant challenge question response selected,s1_r1_e1,Categorical,A | B | C | D,NA,NA,1,NA,direct-psychopy
 challengeResponse2.corr,valence readAloud task: challenge question accuracy,indication of whether participant correctly answered challenge question,s1_r1_e1,Logical,"0, 1","0, error | 1, correct response",NA,1,NA,direct-psychopy
-challengeAccuracy,"valence readAloud task, subject-level: average challenge question accuracy",average of participant's accuracy on challenge questions,s1_r1_e1,Real,"[0,1]",NA,NA,1,NA,code-preprocValence
+challengeACC,"valence readAloud task, subject-level: average challenge question accuracy",average of participant's accuracy on challenge questions,s1_r1_e1,Real,"[0,1]",NA,NA,1,NA,code-preprocValence
 groupAvg,"valence readAloud task, passage-level: cross-participant accuracy",overview of cross-participant accuracy for each reading passage,s1_r1_e1,Real,"[0,1]",NA,NA,1,NA,code-preprocValence
