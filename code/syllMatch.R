@@ -1,6 +1,6 @@
 # readAloud-valence-dataset Syllable Matching
 # Authors: Jessica M. Alexander, George. A. Buzzell
-# Last Updated: 2022-06-14
+# Last Updated: 2022-06-16
 
 ### SECTION 1: SETTING UP
 library(readxl) #read_xlsx function
@@ -356,6 +356,18 @@ for(i in 1:length(sub_folders)){
   }
 }
 
+
 ### SECTION 7: OUTPUT DATA
+#re-order by participant>passage>syllable id
+extract_number <- function(x){
+  syllID <- strsplit(x, "_")[[1]][2]
+  number <- as.numeric(gsub("syll", "", syllID))
+  return(number)
+}
+syllDatTimestamps$number <- unlist(lapply(syllDatTimestamps$syllable, extract_number))
+syllDatTimestamps <- syllDatTimestamps[order(syllDatTimestamps[,1], syllDatTimestamps[,2], syllDatTimestamps[,5]), ]
+syllDatTimestamps <- syllDatTimestamps[,-5]
+
+#output to csv
 write.csv(syllDat,paste(out_path, syll_out, sep = "", collapse = NULL), row.names=FALSE)
 write.csv(syllDatTimestamps,paste(out_path, sylltime_out, sep = "", collapse = NULL), row.names=FALSE)
