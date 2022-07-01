@@ -1,6 +1,6 @@
 # readAloud-valence-dataset Syllable Matching
 # Authors: Jessica M. Alexander, George. A. Buzzell
-# Last Updated: 2022-06-16
+# Last Updated: 2022-07-01
 
 ### SECTION 1: SETTING UP
 library(readxl) #read_xlsx function
@@ -60,7 +60,7 @@ for(i in 1:length(sub_folders)){
     
     errorCoded_file <- paste(input_path, sub_folders[i], "/darwin/", darwinReconciled, "/", allDarwin[j], sep = "", collapse = NULL)
     errorCoded_filename <- allDarwin[j]
-    passage <- strsplit(errorCoded_filename, "\\.")[[1]][1]
+    passage <- strsplit(strsplit(errorCoded_filename, "\\.")[[1]][1], "_")[[1]][1]
     
     #load disfluency data onto scaffold
     scaffold <- read_xlsx(blank_scaffolds, sheet=passage)
@@ -72,7 +72,7 @@ for(i in 1:length(sub_folders)){
     passageErrors <- cbind(scaffold, errorDataT)
     
     #add column to indicate all disfluent syllables
-    passageErrors$disfluent <- rowSums(passageErrors[,7:14])>0
+    passageErrors$disfluent <- rowSums(passageErrors[,8:15])>0
     
     #add column to indicate the onset status of the next syllable
     passageErrors$palOnset <- as.numeric(c(passageErrors$wordOnset[2:length(passageErrors$wordOnset)], 2)>0)
@@ -213,7 +213,7 @@ for(i in 1:length(sub_folders)){
     
     errorCoded_file <- paste(input_path, sub_folders[i], "/valence/", valenceReconciled, "/", allValence[j], sep = "", collapse = NULL)
     errorCoded_filename <- allValence[j]
-    passage <- strsplit(errorCoded_filename, "\\.")[[1]][1]
+    passage <- strsplit(strsplit(errorCoded_filename, "\\.")[[1]][1], "_")[[1]][1]
     
     #load disfluency data onto scaffold
     scaffold <- read_xlsx(blank_scaffolds, sheet=passage)
@@ -225,7 +225,7 @@ for(i in 1:length(sub_folders)){
     passageErrors <- cbind(scaffold, errorDataT)
     
     #add column to indicate all disfluent syllables
-    passageErrors$disfluent <- rowSums(passageErrors[,7:14])>0
+    passageErrors$disfluent <- rowSums(passageErrors[,8:15])>0
     
     #add column to indicate the onset status of the next syllable
     passageErrors$palOnset <- as.numeric(c(passageErrors$wordOnset[2:length(passageErrors$wordOnset)], 2)>0)
