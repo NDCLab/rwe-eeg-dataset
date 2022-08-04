@@ -1,6 +1,22 @@
-# readAloud-valence-dataset Syllable Matching
+# rwe-eeg-dataset Syllable Matching
 # Authors: Jessica M. Alexander, George. A. Buzzell
-# Last Updated: 2022-07-01
+# Last Updated: 2022-08-04
+# This script identifies mispronunciations in each passage read by each participant and attempts to match to a correctly
+# produced syllable provided that there is a distance of at least 10 correct syllables produced since the last error.
+# Error syllables are matched to potential non-error syllables first on a three-digit code that indicates:
+# 1) whether syllable is word initial (1) or word internal (0)
+# 2) whether syllable is followed by any kind of punctuation (1=yes, 0=no)
+# 3) whether the following syllable is word initial (1) or word internal (0)
+# The set of possible matches is limited to syllables at least five syllables away from the error syllable. 
+# The set is reviewed for a perfect match to the word that contains the error syllable; if an instance
+# of the same word appears in the set of possible matches, it is selected.  Otherwise, the same search is applied to the
+# word lemma.  If neither the word nor its lemma exists in the set of possible matches, the set is ordered, in descending
+# order, by the distance between averaged frequency from the error syllable pair and the potential match pair.  Averaged
+# frequency is computed by averaging across the word frequency of the word that contains the syllable in question and
+# the word that contains the next syllable. The SUBTLEXUS corpus is used for word frequency given its common usage in the
+# field and practical application (free txt download). The first match in the ordered set that is not already used as a
+# match for an error syllable is selected.
+
 
 ### SECTION 1: SETTING UP
 library(readxl) #read_xlsx function
@@ -38,6 +54,12 @@ colnames(syllDatTimestamps) <- c("id",
                                "marker",
                                "syllable")
 sylltime_out <- paste("syllable-match-timestamps_", today, ".csv", sep="", collapse=NULL)
+
+syllDatTotals <- data.frame(matrix(ncol=3, nrow=0))
+colnames(syllDatTotals) <- c("id",
+                             "passage",
+                             "mispron")
+sylltotal_out <- paste("syllable-match-totals_", today, ".csv", sep="", collapse=NULL)
 
 ### SECTION 2: START PARTICIPANT LOOP
 #loop over participants (subfolders)
@@ -114,19 +136,21 @@ for(i in 1:length(sub_folders)){
     #add column with string representing the syllable's onset value + existence of a punctuation boundary + next syllable's onset value
     passageErrors$pairCode <- paste(passageErrors$wordOnset, passageErrors$punctuation,passageErrors$palOnset)
     
+    #compose list of selected errors (at least one correct syllable between error syllables)
+    allErrors <- which(passageErrors$disfluent==TRUE)
+    spacedErrors <- diff(allErrors)>10
+    allMinusOne <- allErrors[2:length(allErrors)]
+    selectErrors <- c(allErrors[1], allMinusOne[spacedErrors])
     
     ### SECTION 4: START MISPRONUNCIATION LOOP
     errorType <- "mispron"
     errorMarker <- 110
     correctMarker <- 111
-    
+
     #create vector with identities of mispronounced syllables
     lastSyll <- tail(passageErrors$syllable_id)[1]
     mispron <- which(passageErrors$mispron==1 & passageErrors$syllable_id!=lastSyll) #exclude last syllable (which cannot be paired with following syllable)
-    mispronTrim <- c()
-    for(item in mispron){
-      if((item-1) %in% mispronTrim){next}
-      else{mispronTrim <- c(mispronTrim, item)}} #ensure at least one correct syllable between error syllables (skip sequential errors)
+    mispronTrim <- mispron[mispron %in% selectErrors] #include only mispron errors from list selected to ensure correct syllables appear between errors
     
     #add all mispronounced syllables (if any) to matchedSyllables to avoid re-use during matching process
     if(!is.null(mispronTrim)){for(err in mispronTrim){matchedSyllables <- c(matchedSyllables, passageErrors$syllable_id[err])}}
@@ -201,6 +225,10 @@ for(i in 1:length(sub_folders)){
                                                               matchSyll)
         }
       }
+      
+    syllDatTotals[nrow(syllDatTotals) + 1,] <-c(id,
+                                                passage,
+                                                length(mispron))
     }
   }
   
@@ -267,17 +295,22 @@ for(i in 1:length(sub_folders)){
     #add column with string representing the syllable's onset value + existence of a punctuation boundary + next syllable's onset value
     passageErrors$pairCode <- paste(passageErrors$wordOnset, passageErrors$punctuation,passageErrors$palOnset)
     
+    #compose list of selected errors (at least one correct syllable between error syllables)
+    allErrors <- which(passageErrors$disfluent==TRUE)
+    spacedErrors <- diff(allErrors)>10
+    allMinusOne <- allErrors[2:length(allErrors)]
+    selectErrors <- c(allErrors[1], allMinusOne[spacedErrors])
+    
     
     ### SECTION 6: START MISPRONUNCIATION LOOP
     errorType <- "mispron"
+    errorMarker <- 110
+    correctMarker <- 111
     
     #create vector with identities of mispronounced syllables
     lastSyll <- tail(passageErrors$syllable_id)[1]
     mispron <- which(passageErrors$mispron==1 & passageErrors$syllable_id!=lastSyll) #exclude last syllable (which cannot be paired with following syllable)
-    mispronTrim <- c()
-    for(item in mispron){
-      if((item-1) %in% mispronTrim){next}
-      else{mispronTrim <- c(mispronTrim, item)}} #ensure at least one correct syllable between error syllables (skip sequential errors)
+    mispronTrim <- mispron[mispron %in% selectErrors] #include only mispron errors from list selected to ensure correct syllables appear between errors
     
     #add all mispronounced syllables (if any) to matchedSyllables to avoid re-use during matching process
     if(!is.null(mispronTrim)){for(err in mispronTrim){matchedSyllables <- c(matchedSyllables, passageErrors$syllable_id[err])}}
@@ -352,6 +385,10 @@ for(i in 1:length(sub_folders)){
                                                               matchSyll)
         }
       }
+    
+    syllDatTotals[nrow(syllDatTotals) + 1,] <-c(id,
+                                                passage,
+                                                length(mispron))
     }
   }
 }
@@ -371,3 +408,4 @@ syllDatTimestamps <- syllDatTimestamps[,-5]
 #output to csv
 write.csv(syllDat,paste(out_path, syll_out, sep = "", collapse = NULL), row.names=FALSE)
 write.csv(syllDatTimestamps,paste(out_path, sylltime_out, sep = "", collapse = NULL), row.names=FALSE)
+write.csv(syllDatTotals,paste(out_path, sylltotal_out, sep = "", collapse = NULL), row.names=FALSE)
