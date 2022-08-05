@@ -1,7 +1,6 @@
 # rwe-eeg-dataset PsychoPy Preprocessing for Valence Reading Task
 # Author: Jessica M. Alexander
-# Last Updated: 2022-06-08
-
+# Last Updated: 2022-08-05
 ### SECTION 1: SETTING UP
 #set up date for output file naming
 today <- Sys.Date()
@@ -115,4 +114,18 @@ write.csv(readAloudValenceChallengeDat,paste(out_path,readAloudValence_out_passa
 write.csv(readAloudValenceSummaryDat,paste(out_path,readAloudValence_out_subjectLevel, sep = "", collapse = NULL), row.names=FALSE)
 
 ### SECTION 5: UPDATE CENTRAL TRACKER FOR STUDY
-# tbd (central tracker not yet implemented)
+#load central tracker
+#track_path <- '/home/data/NDClab/datasets/readAloud-valence-dataset/data-monitoring/central-tracker_rwe-eeg.csv'
+track_path <- '/Users/jalexand/github/readAloud-valence-dataset/data-monitoring/central-tracker_rwe-eeg.csv'
+trackerDat <- read.csv(track_path, header=TRUE, check.names=FALSE)
+
+for (row in 1:nrow(readAloudValenceSummaryDat)) {
+  accuracy <- readAloudValenceSummaryDat[row, "challengeACC"]
+  id <- readAloudValenceSummaryDat[row, "id"]
+  if (accuracy >= 0.7) {
+    trackerDat[trackerDat$id == id, ]$dvalenceChallenge_s1_r1_e1 = "1"
+  } else {
+    trackerDat[trackerDat$id == id, ]$valenceChallenge_s1_r1_e1 = "0"
+  } 
+}
+print("Updated valenceChallenge_s1_r1_e1!")

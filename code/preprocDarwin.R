@@ -1,6 +1,6 @@
 # rwe-eeg-dataset PsychoPy Preprocessing for Darwin Reading Task
 # Author: Jessica M. Alexander
-# Last Updated: 2022-06-08
+# Last Updated: 2022-08-05
 
 ### SECTION 1: SETTING UP
 #set up date for output file naming
@@ -89,4 +89,18 @@ write.csv(readAloudDarwinChallengeDat,paste(out_path,readAloudDarwin_out_passage
 write.csv(readAloudDarwinSummaryDat,paste(out_path,readAloudDarwin_out_subjectLevel, sep = "", collapse = NULL), row.names=FALSE)
 
 ### SECTION 5: UPDATE CENTRAL TRACKER FOR STUDY
-# tbd (central tracker not yet implemented)
+#load central tracker
+#track_path <- '/home/data/NDClab/datasets/readAloud-valence-dataset/data-monitoring/central-tracker_rwe-eeg.csv'
+track_path <- '/Users/jalexand/github/readAloud-valence-dataset/data-monitoring/central-tracker_rwe-eeg.csv'
+trackerDat <- read.csv(track_path, header=TRUE, check.names=FALSE)
+
+for (row in 1:nrow(readAloudDarwinSummaryDat)) {
+  accuracy <- readAloudDarwinSummaryDat[row, "challengeACC"]
+  id <- readAloudDarwinSummaryDat[row, "id"]
+  if (accuracy >= 0.7) {
+    trackerDat[trackerDat$id == id, ]$darwinChallenge_s1_r1_e1 = "1"
+  } else {
+    trackerDat[trackerDat$id == id, ]$darwinChallenge_s1_r1_e1 = "0"
+  } 
+}
+print("Updated darwinChallenge_s1_r1_e1!")
