@@ -414,3 +414,19 @@ syllDatTimestamps <- syllDatTimestamps[,-5]
 write.csv(syllDat,paste(out_path, syll_out, sep = "", collapse = NULL), row.names=FALSE)
 write.csv(syllDatTimestamps,paste(out_path, sylltime_out, sep = "", collapse = NULL), row.names=FALSE)
 write.csv(syllDatTotals,paste(out_path, sylltotal_out, sep = "", collapse = NULL), row.names=FALSE)
+
+
+### SECTION 8: UPDATE CENTRAL TRACKER FOR STUDY
+#load central tracker
+#track_path <- '/home/data/NDClab/datasets/readAloud-valence-dataset/data-monitoring/central-tracker_rwe-eeg.csv'
+track_path <- '/Users/jalexand/github/readAloud-valence-dataset/data-monitoring/central-tracker_rwe-eeg.csv'
+trackerDat <- read.csv(track_path, header=TRUE, check.names=FALSE)
+
+subs_matched <- unique(syllDat$id)
+
+for (x in 1:length(subs_matched)) {
+  id <- subs_matched[x]
+  trackerDat[trackerDat$id == id, ]$syllMatch_s1_r1_e1 = "1"
+}
+
+print("Updated syllMatch_s1_r1_e1!")
