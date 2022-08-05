@@ -1,0 +1,3 @@
+# Experimental Tasks
+
+This folder contains the scripts used in this experimental task. The data collection protocol is available [here](https://docs.google.com/document/d/1vJZyH3AMlQ7oAQ_Q7PzoEztWnVY3ztSn/edit?usp=sharing&ouid=111423182084086415442&rtpof=true&sd=true). For further details on the Valence stimuli, see the [readAloud-valence-dataset](https://github.com/NDCLab/readAloud-valence-dataset) repository.

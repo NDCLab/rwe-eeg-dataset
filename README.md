@@ -9,7 +9,7 @@ See rwe-dataset and readAloud-valence-dataset.  Pilot participants perform the t
 
 
 ## Roadmap
-Preliminary pilot results for Summer 2022.
+Preliminary pilot results for Q4 2022.
 
 
 ## Work in Development
@@ -21,7 +21,7 @@ This `main` branch contains completed releases for this project. For all work-in
 | ---  | ---  |
 | Supervision | George A. Buzzell |
 | Project Administration | Jess Alexander |
-| Data Curation | Ana Lopez-Nuñez, Anfernee Duncombe, Brittney Rodriguez, Ana García Morazzani |
+| Data Curation | Jess Alexander, Ana Lopez-Nuñez, Anfernee Duncombe, Brittney Rodriguez, Ana García Morazzani |
 
 Learn more about us [here](https://www.ndclab.com/people).
 

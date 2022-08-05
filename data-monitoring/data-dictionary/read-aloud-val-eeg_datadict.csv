@@ -38,3 +38,4 @@ errorSyll,valence readAloud task: identity of a disfluent syllable,identity of a
 matchSyll,valence readAloud task: identity of a correctly-produced syllable (matched to an errorSyll),identity of a correct syllable matched to a specific errorSyll,s1_r1_e1,Char,see materials,NA,NA,1,NA,code-syllMatch
 marker,valence readAloud task: coded error/correct syllables,markers for specific syllables in a given participant's production,s1_r1_e1,Integer,"110, 111","110, mispronunciation error | 111, mispron match correct",NA,1,NA,code-syllMatch
 syllable,valence readAloud task: identities of error/correct syllables,"either an errorSyll or matchSyll, in optimized format for timestamp coding",s1_r1_e1,Char,see materials,NA,NA,1,NA,code-syllMatch
+totalMispron,valence readAloud task: total number of mispronunciations made,total count of mispronunciation errors before exclusion for matching to correct syllables,s1_r1_e1,Integer,"[0,inf]",NA,NA,1,NA,code-syllMatch
