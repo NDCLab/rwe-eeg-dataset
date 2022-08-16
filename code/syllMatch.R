@@ -95,11 +95,19 @@ for(i in 1:length(sub_folders)){
     errorData <- read_xlsx(errorCoded_file, sheet=NULL, range=anchored("B2", dim=c(9, dim(scaffold)[1]), col_names=FALSE))
     errorDataT <- t(errorData) #transpose matrix to align with scaffold
     colnames(errorDataT) <- c("mispron", "wordstress", "duplicate", "insertion", "hesitation", "elongation", "omission", "flipped")
+    errorDataT[is.na(errorDataT)] <- 0 #replace accidental deletions with default 0
     
     passageErrors <- cbind(scaffold, errorDataT)
     
     #add column to indicate all disfluent syllables
     passageErrors$disfluent <- rowSums(passageErrors[,8:15])>0
+    
+    #add column to indicate whether syllable is at least 7 syllables from any disfluent syllable
+    for(s in 1:nrow(passageErrors)){
+      lookback <- sum(passageErrors$disfluent[max((s-7),0):s])
+      lookforw <- sum(passageErrors$disfluent[s:min((s+7),length(passageErrors$disfluent))])
+      passageErrors$errorSpace[s] <- (lookback==0) & (lookforw==0)
+    }
     
     #add column to indicate the onset status of the next syllable
     passageErrors$palOnset <- as.numeric(c(passageErrors$wordOnset[2:length(passageErrors$wordOnset)], 2)>0)
@@ -153,7 +161,7 @@ for(i in 1:length(sub_folders)){
     correctMarker <- 111
 
     #create vector with identities of mispronounced syllables
-    lastSyll <- tail(passageErrors$syllable_id)[1]
+    lastSyll <- tail(passageErrors$syllable_id, n=1)
     mispron <- which(passageErrors$mispron==1 & passageErrors$syllable_id!=lastSyll) #exclude last syllable (which cannot be paired with following syllable)
     mispronTrim <- mispron[mispron %in% selectErrors] #include only mispron errors from list selected to ensure correct syllables appear between errors
     
@@ -173,11 +181,10 @@ for(i in 1:length(sub_folders)){
         errorWordIdent <- passageErrors$wordTrimmed[mispronTrim[m]]
         errorWordLemma <- passageErrors$wordLemma[mispronTrim[m]]
         
-        #create array of syllables that match errorSyll on the pair code value
-        startBlock <- max(mispronTrim[m]-7, 1)
-        endBlock <- min(mispronTrim[m]+7, nrow(passageErrors))
-        matchDat <- passageErrors[-c(startBlock:endBlock),]
-        matchDat <- matchDat[matchDat$pairCode==errorSyllPairCode,]
+        #create array of syllables from which correct syllables can be drawn
+        matchDat <- passageErrors
+        matchDat <- matchDat[matchDat$pairCode==errorSyllPairCode,] #has the same errorSyllPairCode as the error syllable to be matched
+        matchDat <- matchDat[matchDat$errorSpace==TRUE,] #at least seven syllables away from any error syllable
         
         #created a sorted vector of indices, based on log frequency average for possible matches (syllable plus following syllable)
         matchDat$distToErrorFreq <- abs(matchDat$pairLogFreqAvg - errorSyllPairFreq)
@@ -254,11 +261,19 @@ for(i in 1:length(sub_folders)){
     errorData <- read_xlsx(errorCoded_file, sheet=NULL, range=anchored("B2", dim=c(9, dim(scaffold)[1]), col_names=FALSE))
     errorDataT <- t(errorData) #transpose matrix to align with scaffold
     colnames(errorDataT) <- c("mispron", "wordstress", "duplicate", "insertion", "hesitation", "elongation", "omission", "flipped")
+    errorDataT[is.na(errorDataT)] <- 0 #replace accidental deletions with default 0
     
     passageErrors <- cbind(scaffold, errorDataT)
     
     #add column to indicate all disfluent syllables
     passageErrors$disfluent <- rowSums(passageErrors[,8:15])>0
+    
+    #add column to indicate whether syllable is at least 7 syllables from any disfluent syllable
+    for(s in 1:nrow(passageErrors)){
+      lookback <- sum(passageErrors$disfluent[max((s-7),0):s])
+      lookforw <- sum(passageErrors$disfluent[s:min((s+7),length(passageErrors$disfluent))])
+      passageErrors$errorSpace[s] <- (lookback==0) & (lookforw==0)
+    }
     
     #add column to indicate the onset status of the next syllable
     passageErrors$palOnset <- as.numeric(c(passageErrors$wordOnset[2:length(passageErrors$wordOnset)], 2)>0)
@@ -313,7 +328,7 @@ for(i in 1:length(sub_folders)){
     correctMarker <- 111
     
     #create vector with identities of mispronounced syllables
-    lastSyll <- tail(passageErrors$syllable_id)[1]
+    lastSyll <- tail(passageErrors$syllable_id, n=1)
     mispron <- which(passageErrors$mispron==1 & passageErrors$syllable_id!=lastSyll) #exclude last syllable (which cannot be paired with following syllable)
     mispronTrim <- mispron[mispron %in% selectErrors] #include only mispron errors from list selected to ensure correct syllables appear between errors
     
@@ -333,11 +348,10 @@ for(i in 1:length(sub_folders)){
         errorWordIdent <- passageErrors$wordTrimmed[mispronTrim[m]]
         errorWordLemma <- passageErrors$wordLemma[mispronTrim[m]]
         
-        #create array of syllables that match errorSyll on the pair code value
-        startBlock <- max(mispronTrim[m]-7, 1)
-        endBlock <- min(mispronTrim[m]+7, nrow(passageErrors))
-        matchDat <- passageErrors[-c(startBlock:endBlock),]
-        matchDat <- matchDat[matchDat$pairCode==errorSyllPairCode,]
+        #create array of syllables from which correct syllables can be drawn
+        matchDat <- passageErrors
+        matchDat <- matchDat[matchDat$pairCode==errorSyllPairCode,] #has the same errorSyllPairCode as the error syllable to be matched
+        matchDat <- matchDat[matchDat$errorSpace==TRUE,] #at least seven syllables away from any error syllable
         
         #created a sorted vector of indices, based on log frequency average for possible matches (syllable plus following syllable)
         matchDat$distToErrorFreq <- abs(matchDat$pairLogFreqAvg - errorSyllPairFreq)
@@ -418,8 +432,7 @@ write.csv(syllDatTotals,paste(out_path, sylltotal_out, sep = "", collapse = NULL
 
 ### SECTION 8: UPDATE CENTRAL TRACKER FOR STUDY
 #load central tracker
-#track_path <- '/home/data/NDClab/datasets/readAloud-valence-dataset/data-monitoring/central-tracker_rwe-eeg.csv'
-track_path <- '/Users/jalexand/github/readAloud-valence-dataset/data-monitoring/central-tracker_rwe-eeg.csv'
+track_path <- '/home/data/NDClab/datasets/rwe-eeg-dataset/data-monitoring/central-tracker_rwe-eeg.csv'
 trackerDat <- read.csv(track_path, header=TRUE, check.names=FALSE)
 
 subs_matched <- unique(syllDat$id)
