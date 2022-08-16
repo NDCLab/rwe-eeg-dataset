@@ -1,8 +1,8 @@
 # rwe-eeg-dataset Syllable Matching
 # Authors: Jessica M. Alexander, George. A. Buzzell
-# Last Updated: 2022-08-05
+# Last Updated: 2022-08-16
 # This script identifies mispronunciations in each passage read by each participant and attempts to match to a correctly
-# produced syllable provided that there is a distance of at least seven correct syllables produced since the last error.
+# produced syllable, provided that there is a distance of at least seven correct syllables produced since the last error.
 # The spacing of seven syllables was chosen due to the results of Laubrock & Kliegl 2015 (10.3389/fpsyg.2015.01432), which
 # found an average eye-voice span during reading aloud of 16.2 letters, plus one standard deviation of 5.2 letters = 21.4
 # letters. Across all unique syllables in the stimuli reading passages, average syllable length was 3.521401 letters.
@@ -141,7 +141,7 @@ for(i in 1:length(sub_folders)){
     #add column with string representing the syllable's onset value + existence of a punctuation boundary + next syllable's onset value
     passageErrors$pairCode <- paste(passageErrors$wordOnset, passageErrors$punctuation,passageErrors$palOnset)
     
-    #compose list of selected errors (at least one correct syllable between error syllables)
+    #compose list of selected errors (at least seven correct syllables between error syllables)
     allErrors <- which(passageErrors$disfluent==TRUE)
     spacedErrors <- diff(allErrors)>7
     allMinusOne <- allErrors[2:length(allErrors)]
@@ -300,7 +300,7 @@ for(i in 1:length(sub_folders)){
     #add column with string representing the syllable's onset value + existence of a punctuation boundary + next syllable's onset value
     passageErrors$pairCode <- paste(passageErrors$wordOnset, passageErrors$punctuation,passageErrors$palOnset)
     
-    #compose list of selected errors (at least one correct syllable between error syllables)
+    #compose list of selected errors (at least seven correct syllables between error syllables)
     allErrors <- which(passageErrors$disfluent==TRUE)
     spacedErrors <- diff(allErrors)>7
     allMinusOne <- allErrors[2:length(allErrors)]
