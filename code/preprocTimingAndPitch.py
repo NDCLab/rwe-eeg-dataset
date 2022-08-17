@@ -16,7 +16,7 @@ today_formatted = today.strftime("%Y-%m-%d")
 
 #function to create working df for each subject and prefill with coded timestamps
 def create_newdf(npdf):
-  newdf = np.full((20,14), fill_value=np.NaN)
+  newdf = np.full((20,26), fill_value=np.NaN)
   
   for row in range(npdf.shape[0]):
     newdf[row, 0:8] = npdf[row, 1:9]
