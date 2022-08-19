@@ -1,6 +1,6 @@
 # rwe-eeg-dataset PsychoPy Preprocessing for Darwin Reading Task
 # Author: Jessica M. Alexander
-# Last Updated: 2022-08-05
+# Last Updated: 2022-08-19
 
 ### SECTION 1: SETTING UP
 #set up date for output file naming
@@ -8,12 +8,8 @@ today <- Sys.Date()
 today <- format(today, "%Y%m%d")
 
 #set up directories for input/output data
-#hpc
-#input_path <- '/home/data/NDClab/datasets/rwe-eeg-dataset/sourcedata/checked/psychopy/'
-#out_path <- '/home/data/NDClab/datasets/rwe-eeg-dataset/derivatives/preprocessed/'
-#local
-input_path <- '/Users/jalexand/github/rwe-eeg-dataset/sourcedata/raw/psychopy/'
-out_path <- '/Users/jalexand/github/rwe-eeg-dataset/derivatives/preprocessed/'
+input_path <- '/home/data/NDClab/datasets/rwe-eeg-dataset/sourcedata/checked/psychopy/'
+out_path <- '/home/data/NDClab/datasets/rwe-eeg-dataset/derivatives/preprocessed/'
 
 #identify participant folders within input dir
 sub_folders <- list.files(input_path, pattern = "sub")
@@ -90,8 +86,7 @@ write.csv(readAloudDarwinSummaryDat,paste(out_path,readAloudDarwin_out_subjectLe
 
 ### SECTION 5: UPDATE CENTRAL TRACKER FOR STUDY
 #load central tracker
-#track_path <- '/home/data/NDClab/datasets/readAloud-valence-dataset/data-monitoring/central-tracker_rwe-eeg.csv'
-track_path <- '/Users/jalexand/github/readAloud-valence-dataset/data-monitoring/central-tracker_rwe-eeg.csv'
+track_path <- '/home/data/NDClab/datasets/readAloud-valence-dataset/data-monitoring/central-tracker_rwe-eeg.csv'
 trackerDat <- read.csv(track_path, header=TRUE, check.names=FALSE)
 
 for (row in 1:nrow(readAloudDarwinSummaryDat)) {
