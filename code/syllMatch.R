@@ -1,6 +1,6 @@
 # rwe-eeg-dataset Syllable Matching
 # Authors: Jessica M. Alexander, George. A. Buzzell
-# Last Updated: 2022-08-16
+# Last Updated: 2022-08-24
 # This script identifies mispronunciations in each passage read by each participant and attempts to match to a correctly
 # produced syllable, provided that there is a distance of at least seven correct syllables produced since the last error.
 # The spacing of seven syllables was chosen due to the results of Laubrock & Kliegl 2015 (10.3389/fpsyg.2015.01432), which
@@ -264,6 +264,9 @@ for(i in 1:length(sub_folders)){
     errorDataT[is.na(errorDataT)] <- 0 #replace accidental deletions with default 0
     
     passageErrors <- cbind(scaffold, errorDataT)
+    
+    #drop last sentence of broccoli passage because the stimulus contains an error
+    if(passage=="broccoli"){passageErrors <- passageErrors[1:288,]}
     
     #add column to indicate all disfluent syllables
     passageErrors$disfluent <- rowSums(passageErrors[,8:15])>0
