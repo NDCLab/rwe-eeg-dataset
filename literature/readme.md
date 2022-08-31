@@ -1,9 +1,3 @@
 # Literature
 
-### Instructions
-1. Create a collection on the NDCLab Zotero group.
-2. Replaced the capitalized text below with the webpath for the collection.
-
-
-### Project Notes
-Please visit [Zotero](INSERT YOUR LINK HERE) to see relevant publications reviewed.
+Please visit the Zotero links for the [rwe-dataset](https://www.zotero.org/groups/2934532/ndc_lab/collections/PHMKNM46) and [readAloud-valence-dataset](https://www.zotero.org/groups/2934532/ndc_lab/collections/ISXJBN3T), respectively.

@@ -1,0 +1,26 @@
+﻿variable,description,detail,allowedSuffix,valueType,allowedValues,valueInfo,naValueType,activeStatus,replacement,provenance
+bmis_i1,"BMIS, question 1",Lively,s1_r1_e1,Integer,"1, 2, 3, 4","1, Definitely Do Not Feel | 2, Do Not Feel | 3, Slightly Feel | 4, Definitely Feel",NA,1,NA,direct-redcap
+bmis_i2,"BMIS, question 2",Happy,s1_r1_e1,Integer,"1, 2, 3, 4","1, Definitely Do Not Feel | 2, Do Not Feel | 3, Slightly Feel | 4, Definitely Feel",NA,1,NA,direct-redcap
+bmis_i3,"BMIS, question 3",Sad,s1_r1_e1,Integer,"1, 2, 3, 4","1, Definitely Do Not Feel | 2, Do Not Feel | 3, Slightly Feel | 4, Definitely Feel",NA,1,NA,direct-redcap
+bmis_i4,"BMIS, question 4",Tired,s1_r1_e1,Integer,"1, 2, 3, 4","1, Definitely Do Not Feel | 2, Do Not Feel | 3, Slightly Feel | 4, Definitely Feel",NA,1,NA,direct-redcap
+bmis_i5,"BMIS, question 5",Caring,s1_r1_e1,Integer,"1, 2, 3, 4","1, Definitely Do Not Feel | 2, Do Not Feel | 3, Slightly Feel | 4, Definitely Feel",NA,1,NA,direct-redcap
+bmis_i6,"BMIS, question 6",Content,s1_r1_e1,Integer,"1, 2, 3, 4","1, Definitely Do Not Feel | 2, Do Not Feel | 3, Slightly Feel | 4, Definitely Feel",NA,1,NA,direct-redcap
+bmis_i7,"BMIS, question 7",Gloomy,s1_r1_e1,Integer,"1, 2, 3, 4","1, Definitely Do Not Feel | 2, Do Not Feel | 3, Slightly Feel | 4, Definitely Feel",NA,1,NA,direct-redcap
+bmis_i8,"BMIS, question 8",Jittery,s1_r1_e1,Integer,"1, 2, 3, 4","1, Definitely Do Not Feel | 2, Do Not Feel | 3, Slightly Feel | 4, Definitely Feel",NA,1,NA,direct-redcap
+bmis_i9,"BMIS, question 9",Drowsy,s1_r1_e1,Integer,"1, 2, 3, 4","1, Definitely Do Not Feel | 2, Do Not Feel | 3, Slightly Feel | 4, Definitely Feel",NA,1,NA,direct-redcap
+bmis_i10,"BMIS, question 10",Grouchy,s1_r1_e1,Integer,"1, 2, 3, 4","1, Definitely Do Not Feel | 2, Do Not Feel | 3, Slightly Feel | 4, Definitely Feel",NA,1,NA,direct-redcap
+bmis_i11,"BMIS, question 11",Peppy,s1_r1_e1,Integer,"1, 2, 3, 4","1, Definitely Do Not Feel | 2, Do Not Feel | 3, Slightly Feel | 4, Definitely Feel",NA,1,NA,direct-redcap
+bmis_i12,"BMIS, question 12",Nervous,s1_r1_e1,Integer,"1, 2, 3, 4","1, Definitely Do Not Feel | 2, Do Not Feel | 3, Slightly Feel | 4, Definitely Feel",NA,1,NA,direct-redcap
+bmis_i13,"BMIS, question 13",Calm,s1_r1_e1,Integer,"1, 2, 3, 4","1, Definitely Do Not Feel | 2, Do Not Feel | 3, Slightly Feel | 4, Definitely Feel",NA,1,NA,direct-redcap
+bmis_i14,"BMIS, question 14",Loving,s1_r1_e1,Integer,"1, 2, 3, 4","1, Definitely Do Not Feel | 2, Do Not Feel | 3, Slightly Feel | 4, Definitely Feel",NA,1,NA,direct-redcap
+bmis_i15,"BMIS, question 15",Fed up,s1_r1_e1,Integer,"1, 2, 3, 4","1, Definitely Do Not Feel | 2, Do Not Feel | 3, Slightly Feel | 4, Definitely Feel",NA,1,NA,direct-redcap
+bmis_i16,"BMIS, question 16",Active,s1_r1_e1,Integer,"1, 2, 3, 4","1, Definitely Do Not Feel | 2, Do Not Feel | 3, Slightly Feel | 4, Definitely Feel",NA,1,NA,direct-redcap
+bmis_i17,"BMIS, question 17","Overall, my mood is: ",s1_r1_e1,Integer,"[0,100]",NA,NA,1,NA,direct-redcap
+bmis_scrdVal,BMIS pleasant-unpleasant (valence) score,"sum of bmis items 1, 2, 3*, 4*, 5, 6, 7*, 8*, 9*, 10*, 11, 12*, 13, 14, 15*, and 16 after asterisked items are reversed (NA if bmis_percVal < 1)",s1_r1_e1,Integer,"[16,64]",NA,NA,1,NA,code-instruments
+bmis_scrdAro,BMIS arousal-calm score,"sum of bmis items 1, 3, 4*, 5, 7, 8, 11, 12, 13*, 14, 15, and 16 after asterisked items are reversed (NA if bmis_percAro < 1)",s1_r1_e1,Integer,"[12,48]",NA,NA,1,NA,code-instruments
+bmis_scrdTird,BMIS positive-tired score,"sum of bmis items 1, 4*, 5, 9*, 11, 14, and 16 after asterisked items are reversed (NA if bmis_percTird < 1)",s1_r1_e1,Integer,"[7,28]",NA,NA,1,NA,code-instruments
+bmis_scrdRlx,BMIS negative-relaxed score,"sum of bmis items 3, 7, 8, 12, 13*, and 15 after asterisked items are reversed (NA if bmis_percRlx < 1)",s1_r1_e1,Integer,"[6,24]",NA,NA,1,NA,code-instruments
+bmis_percVal,BMIS pleasant-unpleasant percentage response,percentage of response for bmis pleasant-unpleasant items (NA if all items are blank),s1_r1_e1,Real,"[0,1]",NA,NA,1,NA,code-instruments
+bmis_percAro,BMIS arousal-calm percentage response,percentage of response for bmis arousal-calm items (NA if all items are blank),s1_r1_e1,Real,"[0,1]",NA,NA,1,NA,code-instruments
+bmis_percTird,BMIS positive-tired percentage response,percentage of response for bmis positive-tired items (NA if all items are blank),s1_r1_e1,Real,"[0,1]",NA,NA,1,NA,code-instruments
+bmis_percRlx,BMIS negative-relaxed percentage response,percentage of response for bmis negative-relaxed items (NA if all items are blank),s1_r1_e1,Real,"[0,1]",NA,NA,1,NA,code-instruments
