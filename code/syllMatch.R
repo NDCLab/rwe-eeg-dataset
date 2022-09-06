@@ -60,10 +60,19 @@ colnames(syllDatTimestamps) <- c("id",
                                "syllable")
 sylltime_out <- paste("syllable-match-timestamps_", today, ".csv", sep="", collapse=NULL)
 
-syllDatTotals <- data.frame(matrix(ncol=3, nrow=0))
+syllDatTotals <- data.frame(matrix(ncol=12, nrow=0))
 colnames(syllDatTotals) <- c("id",
                              "passage",
-                             "totalMispron")
+                             "totMispron",
+                             "totWordstress",
+                             "totDuplicate",
+                             "totInsert",
+                             "totHesitation",
+                             "totElongation",
+                             "totOmission",
+                             "totFlipped",
+                             "totalError",
+                             "matchedMispron")
 sylltotal_out <- paste("syllable-match-totals_", today, ".csv", sep="", collapse=NULL)
 
 ### SECTION 2: START PARTICIPANT LOOP
@@ -148,6 +157,17 @@ for(i in 1:length(sub_folders)){
     
     #add column with string representing the syllable's onset value + existence of a punctuation boundary + next syllable's onset value
     passageErrors$pairCode <- paste(passageErrors$wordOnset, passageErrors$punctuation,passageErrors$palOnset)
+    
+    #capture total list of errors per category type
+    totMispron <- sum(passageErrors$mispron>0)
+    totWordstress <- sum(passageErrors$wordstress>0)
+    totDuplicate <- sum(passageErrors$duplicate>0)
+    totInsert <- sum(passageErrors$insertion>0)
+    totHesitation <- sum(passageErrors$hesitation>0)
+    totElongation <- sum(passageErrors$elongation>0)
+    totOmission <- sum(passageErrors$omission>0)
+    totFlipped <- sum(passageErrors$flipped>0)
+    totalError <- sum(passageErrors$disfluent==TRUE)
     
     #compose list of selected errors (at least seven correct syllables between error syllables)
     allErrors <- which(passageErrors$disfluent==TRUE)
@@ -240,7 +260,16 @@ for(i in 1:length(sub_folders)){
       
     syllDatTotals[nrow(syllDatTotals) + 1,] <-c(id,
                                                 passage,
-                                                length(mispron))
+                                                totMispron,
+                                                totWordstress,
+                                                totDuplicate,
+                                                totInsert,
+                                                totHesitation,
+                                                totElongation,
+                                                totOmission,
+                                                totFlipped,
+                                                totalError,
+                                                length(mispronTrim))
     }
   }
   
@@ -317,6 +346,17 @@ for(i in 1:length(sub_folders)){
     
     #add column with string representing the syllable's onset value + existence of a punctuation boundary + next syllable's onset value
     passageErrors$pairCode <- paste(passageErrors$wordOnset, passageErrors$punctuation,passageErrors$palOnset)
+    
+    #capture total list of errors per category type
+    totMispron <- sum(passageErrors$mispron>0)
+    totWordstress <- sum(passageErrors$wordstress>0)
+    totDuplicate <- sum(passageErrors$duplicate>0)
+    totInsert <- sum(passageErrors$insertion>0)
+    totHesitation <- sum(passageErrors$hesitation>0)
+    totElongation <- sum(passageErrors$elongation>0)
+    totOmission <- sum(passageErrors$omission>0)
+    totFlipped <- sum(passageErrors$flipped>0)
+    totalError <- sum(passageErrors$disfluent==TRUE)
     
     #compose list of selected errors (at least seven correct syllables between error syllables)
     allErrors <- which(passageErrors$disfluent==TRUE)
@@ -410,7 +450,16 @@ for(i in 1:length(sub_folders)){
     
     syllDatTotals[nrow(syllDatTotals) + 1,] <-c(id,
                                                 passage,
-                                                length(mispron))
+                                                totMispron,
+                                                totWordstress,
+                                                totDuplicate,
+                                                totInsert,
+                                                totHesitation,
+                                                totElongation,
+                                                totOmission,
+                                                totFlipped,
+                                                totalError,
+                                                length(mispronTrim))
     }
   }
 }
