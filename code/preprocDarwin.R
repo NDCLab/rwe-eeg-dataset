@@ -86,7 +86,7 @@ write.csv(readAloudDarwinSummaryDat,paste(out_path,readAloudDarwin_out_subjectLe
 
 ### SECTION 5: UPDATE CENTRAL TRACKER FOR STUDY
 #load central tracker
-track_path <- '/home/data/NDClab/datasets/rwe-eeg-dataset/data-monitoring/central-tracker_rwe-eeg.csv'
+track_path <- '/home/data/NDClab/datasets/rwe-eeg-dataset/data-monitoring/central-tracker_rwe-eeg-dataset.csv'
 trackerDat <- read.csv(track_path, header=TRUE, check.names=FALSE)
 
 for (row in 1:nrow(readAloudDarwinSummaryDat)) {
