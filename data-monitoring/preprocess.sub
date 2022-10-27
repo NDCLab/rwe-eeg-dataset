@@ -1,0 +1,55 @@
+#!/bin/bash
+#SBATCH --nodes=1                # node count
+#SBATCH --ntasks=1               # total number of tasks across all nodes
+#SBATCH --cpus-per-task=1        # CPUS to use when using data parallelization
+#SBATCH --time=05:00:00          # total run time limit (HH:MM:SS)
+
+# A slurm script to run ALL of preprocessing
+
+# load functions and variables
+source /home/data/NDClab/tools/lab-devOps/scripts/monitor/tools.sh
+
+# load modules
+module load singularity-3.5.3
+module load r-4.0.2-gcc-8.2.0-tf4pnwr
+module load miniconda3-4.5.11-gcc-8.2.0-oqs2mbg
+
+# automatically get project name
+dataset=$(dirname $(pwd))
+output_path="${dataset}/derivatives/preprocessed"
+data_source="${dataset}/sourcedata/checked/redcap/"
+log="${dataset}/data-monitoring/data-monitoring-log.md"
+
+dir="$(basename $dataset)"
+tracker="${dataset}/data-monitoring/central-tracker_${dir}.csv"
+
+# constant paths
+sing_image="/home/data/NDClab/tools/instruments/containers/singularity/inst-container.simg"
+json_scorer="/home/data/NDClab/tools/instruments/scripts/json_scorer.py"
+survey_data="/home/data/NDClab/tools/instruments/scripts/surveys.json"
+
+# get most recent redcap file for processing
+cd $data_source
+input_file=$( get_new_redcap )
+echo "Found newest redcap: ${input_file}"
+cd ../../../data-monitoring
+
+# run instruments to preprocess survey data
+singularity exec --bind $dataset,/home/data/NDClab/tools/instruments \
+                $sing_image \
+                python3 $json_scorer \
+                    "${data_source}/${input_file}" \
+                    $survey_data \
+                    $output_path \
+                    $tracker 
+
+# insert singularity scripts here
+
+if [[ ! -f "$log" ]]; then
+    echo "$log does not exist, skipping log."
+    exit 0
+fi
+now=`date '+%Y-%m-%d_%T'`
+echo "${now} Preprocessing ran: view slurm-.out file to see effects." >> $log
+
+# zoom, redcap_data, redcap_scrd, psychopy, eeg, audio, digi
