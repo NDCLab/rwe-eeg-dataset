@@ -9,11 +9,7 @@ See rwe-dataset and readAloud-valence-dataset.  Pilot participants perform the t
 
 
 ## Roadmap
-Preliminary pilot results for Q4 2022.
-
-
-## Work in Development
-This `main` branch contains completed releases for this project. For all work-in-progress, please switch over to the `dev` branches.
+Preliminary pilot results for Q1 2023.
 
 
 ## Contributors
