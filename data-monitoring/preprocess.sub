@@ -44,6 +44,8 @@ singularity exec --bind $dataset,/home/data/NDClab/tools/instruments \
                     $tracker 
 
 # insert singularity scripts here
+singularity exec --bind $dataset /home/data/NDClab/tools/containers/R-4.1.2/R-con.simg Rscript "${dataset}/code/preprocDarwin.R" ; \
+											Rscript "${dataset}/code/preprocValence.R"
 
 if [[ ! -f "$log" ]]; then
     echo "$log does not exist, skipping log."
