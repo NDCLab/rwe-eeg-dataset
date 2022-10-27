@@ -119,7 +119,7 @@ for (row in 1:nrow(readAloudValenceSummaryDat)) {
   accuracy <- readAloudValenceSummaryDat[row, "challengeACC"]
   id <- readAloudValenceSummaryDat[row, "id"]
   if (accuracy >= 0.7) {
-    trackerDat[trackerDat$id == id, ]$dvalenceChallenge_s1_r1_e1 = "1"
+    trackerDat[trackerDat$id == id, ]$valenceChallenge_s1_r1_e1 = "1"
   } else {
     trackerDat[trackerDat$id == id, ]$valenceChallenge_s1_r1_e1 = "0"
   } 
