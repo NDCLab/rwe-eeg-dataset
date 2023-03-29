@@ -1,6 +1,6 @@
 # rwe-eeg-dataset Disfluency Preprocessing
 # Author: Jessica M. Alexander
-# Last Updated: 2022-08-16
+# Last Updated: 2023-03-29
 
 ### SECTION 1: SETTING UP
 library(readxl)
@@ -23,7 +23,7 @@ out_path <- '/Users/jalexand/github/rwe-eeg-dataset/derivatives/preprocessed/'
 sub_folders <- list.files(input_path, pattern = "sub")
 
 #create dataframe for storing output data and define output file name
-disfluencySummaryDat <- data.frame(matrix(ncol=8, nrow=0))
+disfluencySummaryDat <- data.frame(matrix(ncol=12, nrow=0))
 colnames(disfluencySummaryDat) <- c("id",
                                     "passage",
                                     "percDisfluent_firstHalf",
@@ -31,7 +31,12 @@ colnames(disfluencySummaryDat) <- c("id",
                                     "percDisfluent_prePREswitch",
                                     "percDisfluent_preswitch",
                                     "percDisfluent_switch",
-                                    "percDisfluent_postswitch")
+                                    "percDisfluent_postswitch",
+                                    "mispronCount",
+                                    "hesCount",
+                                    "elongCount",
+                                    "totalDisfluencyCount")
+
 disfluency_out <- paste("disfluencies_subject-by-passage_", today, ".csv", sep="", collapse=NULL)
 
 ### SECTION 2: START PARTICIPANT LOOP
@@ -67,6 +72,12 @@ for(i in 1:length(sub_folders)){
       
       #add column to indicate all disfluent syllables
       passageErrors$disfluent <- rowSums(passageErrors[,8:15])>0
+      
+      #capture specific error counts
+      mispronCount <- sum(passageErrors$mispron)
+      hesCount <- sum(passageErrors$hesitation)
+      elongCount <- sum(passageErrors$elongation)
+      totalDisfluencyCount <- sum(passageErrors$disfluent)
       
       #calculate percentage disfluency in each passage half
       #first half
@@ -121,7 +132,11 @@ for(i in 1:length(sub_folders)){
                                                                 percDisfluent_prePREswitch,
                                                                 percDisfluent_preswitch,
                                                                 percDisfluent_switch,
-                                                                percDisfluent_postswitch)
+                                                                percDisfluent_postswitch,
+                                                                mispronCount,
+                                                                hesCount,
+                                                                elongCount,
+                                                                totalDisfluencyCount)
     }
   }
 }
